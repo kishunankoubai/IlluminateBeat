@@ -108,3 +108,41 @@
 .musicOption[data-index="10"] .musicIllust {
     background: rgb(84, 255, 255);
 }
+
+@media (max-width: 600px) {
+    #musicSelect .headingLabel {
+        margin-bottom: -40px;
+    }
+    .musicIllust {
+        height: 80%;
+        aspect-ratio: 1;
+    }
+
+    #musicOptions {
+        width: 90vw;
+        height: 60vh;
+        gap: 2vh;
+        overflow-y: auto;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    #musicOptions .musicOption {
+        height: 10vh;
+        max-width: 100vw;
+        width: 80vw;
+        min-height: max-content;
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        gap: 2vh;
+    }
+
+    .musicOption .text {
+        font-size: 0.7em;
+        min-width: 0;
+        overflow: auto;
+        text-overflow: initial;
+        white-space: nowrap;
+    }
+}
