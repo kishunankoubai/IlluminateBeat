@@ -1,0 +1,113 @@
+[
+    {
+        "name": "試作26",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 135,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.5
+    },
+    {
+        "name": "Liar",
+        "musicType": "mp3",
+        "startTick": 240,
+        "adjustment": 102,
+        "delayBeat": 4,
+        "melodyTrack": 1,
+        "tempoTrack": 1,
+        "volume": 0.5
+    },
+    {
+        "name": "k4",
+        "musicType": "wav",
+        "startTick": 240,
+        "adjustment": 102,
+        "delayBeat": 4,
+        "melodyTrack": 1,
+        "tempoTrack": 1,
+        "volume": 0.45
+    },
+    {
+        "name": "ならべてトライアングル",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 140,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.5
+    },
+    {
+        "name": "Top of the Pyramid",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 120,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.6
+    },
+    {
+        "name": "Vector Space",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 115,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 1
+    },
+    {
+        "name": "Unreachability",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 115,
+        "delayBeat": 4,
+        "measureLength": 1.5,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 1
+    },
+    {
+        "name": "マバラマダラ",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 115,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.5
+    },
+    {
+        "name": "ブンブンプーン",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 129,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.5
+    },
+    {
+        "name": "きらきら星",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 115,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 1
+    },
+    {
+        "name": "ふるさと",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 115,
+        "delayBeat": 3,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 1
+    }
+]

@@ -1,0 +1,131 @@
+#circlePanel {
+    width: 30vh;
+    height: 30vh;
+    position: relative;
+    align-items: center;
+}
+
+.circlePanelInner {
+    left: 0;
+    top: 0;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+#circlePanelInner2 {
+    z-index: 1;
+}
+
+#circle {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    background: whitesmoke;
+    transition: background-color 100ms ease-out;
+    display: flex;
+    font-size: 3em;
+    align-items: center;
+    justify-content: center;
+    color: black;
+}
+
+#effectCircle {
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    background: rgb(255, 244, 196);
+    transition: background-color 100ms ease-out;
+    display: flex;
+    font-size: 3em;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+}
+
+#judgementCircle {
+    transition: background-color 100ms ease-out;
+    width: 30vh;
+    height: 30vh;
+    border-radius: 50%;
+    scale: 1.25;
+    border: 4px solid;
+}
+
+#scoreLabel {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+#comboLabel {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    z-index: 1;
+}
+
+#play {
+    transition: background-color 70ms ease-in-out;
+    gap: 10vh;
+    cursor: none;
+}
+
+#play::before {
+    content: "";
+    position: absolute;
+    top: -40vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120vw;
+    height: 80vh;
+    pointer-events: none;
+    background: repeating-conic-gradient(rgba(255, 255, 200, 0.12) 0deg 2deg, transparent 2deg 16deg);
+    opacity: 0.7;
+    filter: blur(1.5px);
+    z-index: 0;
+}
+
+#pause {
+    background-color: rgb(235, 208, 163);
+    z-index: 4;
+}
+
+#notePage {
+    display: none;
+    position: relative;
+}
+
+.note {
+    width: 30vh;
+    height: 30vh;
+    position: absolute;
+    border-radius: 50%;
+    border: 4px rgb(246, 255, 220) solid;
+    box-shadow: 0 10px 20px 0 rgba(168, 148, 64, 0.35);
+}
+
+.progressBar {
+    z-index: 1;
+}
+
+.progressBarOuter {
+    width: 80vw;
+    height: 4vh;
+    border-radius: 2vh;
+    background-color: #888;
+    position: relative;
+}
+
+.progressBarInner {
+    left: 0;
+    top: 0;
+    height: 100%;
+    border-radius: 2vh;
+    position: absolute;
+    background-color: palevioletred;
+}

@@ -1,0 +1,110 @@
+#musicOptions {
+    width: 80vw;
+    height: 60vh;
+    gap: 3vh;
+    overflow-y: auto;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+#musicOptions::-webkit-scrollbar {
+    width: 10px;
+}
+
+#musicOptions::-webkit-scrollbar-track {
+    background: #ccc;
+    border-radius: 5px;
+}
+
+#musicOptions::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 5px;
+    border: 2px solid #888;
+}
+
+#musicOptions::-webkit-scrollbar-thumb:hover {
+    background: #444;
+}
+
+#musicOptions .musicOption {
+    max-width: 100vw;
+    width: 70vw;
+    min-height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5vh;
+}
+
+.musicOption .text {
+    flex-shrink: 1;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#musicOptions .musicOption:first-child {
+    margin-top: 3vh;
+}
+
+#musicOptions .musicOption:last-child {
+    margin-bottom: 3vh;
+}
+
+.musicIllust {
+    height: 90%;
+    aspect-ratio: 1;
+}
+
+.musicIllust {
+    background-color: whitesmoke;
+}
+
+.musicOption[data-index="1"] .musicIllust {
+    background: url("../assets/thumbnail/bandage.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="2"] .musicIllust {
+    background: url("../assets/thumbnail/bandage.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="3"] .musicIllust {
+    background: url("../assets/thumbnail/pentamond.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="4"] .musicIllust {
+    background: url("../assets/thumbnail/pentamond.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="5"] .musicIllust {
+    background: url("../assets/thumbnail/VectorSpaceIcon.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="6"] .musicIllust {
+    background: url("../assets/thumbnail/VectorSpaceIcon.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="7"] .musicIllust {
+    background: url("../assets/thumbnail/AgravityBallsIcon.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="8"] .musicIllust {
+    background: url("../assets/thumbnail/mosquito.png");
+    background-size: cover;
+}
+
+.musicOption[data-index="9"] .musicIllust {
+    background: rgb(84, 255, 255);
+}
+
+.musicOption[data-index="10"] .musicIllust {
+    background: rgb(84, 255, 255);
+}

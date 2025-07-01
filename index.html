@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/InitialLayout.css" />
+        <link rel="stylesheet" href="css/PageLayout.css" />
+        <link rel="stylesheet" href="css/PlayLayout.css" />
+        <link rel="stylesheet" href="css/MusicOptions.css" />
+        <link rel="stylesheet" href="css/DustLayout.css" />
+        <script src="https://unpkg.com/picoaudio/dist/browser/PicoAudio.js"></script>
+        <title>IlluminateBeat</title>
+    </head>
+    <body data-initial-page="pageStart">
+        <div id="invalidPanel">
+            <div class="label headingLabel">NowLoading...</div>
+        </div>
+
+        <div class="page" id="pageStart" data-page="title">
+            <div class="label" id="pageStartLabel">Presented By MCR</div>
+        </div>
+
+        <div class="page" id="title">
+            <div class="label" id="titleLabel">IlluminateBeat</div>
+            <div class="myOptions" id="titleOptions">
+                <button class="myOption" data-index="0" data-page="musicSelect">曲選択へ</button>
+                <button class="myOption" data-index="1" data-page="howToPlay">遊び方</button>
+                <button class="myOption" data-index="2" data-page="others">その他</button>
+            </div>
+        </div>
+
+        <div class="page" id="musicSelect">
+            <div class="label headingLabel">曲選択</div>
+            <div class="myOptions" id="musicOptions">
+                <button class="myOption musicOption" data-index="0" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.1 曲名 : ___<br />
+                        作曲：うめぼし 編曲：いぽた<br />
+                        登場する作品：なし<br />
+                        難易度：5
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="1" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.2 曲名 : Liar<br />
+                        作編曲：いぽた<br />
+                        登場する作品：The Twilight Days!<br />
+                        難易度：6
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="2" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.3 曲名 : Projection<br />
+                        作編曲：いぽた<br />
+                        登場する作品：The Twilight Days!<br />
+                        難易度：7
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="3" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.4 曲名 : ならべてトライアングル<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：Pentamond, Pentamond2<br />
+                        難易度：5
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="4" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.5 曲名 : Top of the Pyramid<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：Pentamond2<br />
+                        難易度：10
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="5" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.6 曲名 : Vector Space<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：Vector Space<br />
+                        難易度：6
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="6" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.7 曲名 : Unreachability<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：Vector Space<br />
+                        難易度：6
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="7" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.8 曲名 : マバラマダラ<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：Agravity Balls<br />
+                        難易度：7
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="8" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.9 曲名 : ブンブンプーン<br />
+                        作編曲：うめぼし<br />
+                        登場する作品：なし<br />
+                        難易度：9
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="9" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.10 曲名 : きらきら星<br />
+                        作曲：Jean-Philippe Rameau 編曲：うめぼし<br />
+                        童謡<br />
+                        難易度：1
+                    </div>
+                </button>
+                <button class="myOption musicOption" data-index="10" data-page="preparingStart">
+                    <div class="musicIllust"></div>
+                    <div class="text" data-align="left">
+                        No.11 曲名 : ふるさと<br />
+                        作曲：岡野貞一 編曲：うめぼし<br />
+                        童謡<br />
+                        難易度：2
+                    </div>
+                </button>
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="preparingStart">
+            <div class="label headingLabel" data-size="16px">プレイ準備</div>
+            <div id="difficultyPanel">
+                <div class="label">レベル：</div>
+                <select id="difficultySelector">
+                    <option value="0">練習</option>
+                    <option value="1">簡単</option>
+                    <option value="2" selected>普通</option>
+                    <option value="3">難しい</option>
+                    <option value="4">頑張って</option>
+                </select>
+            </div>
+            <div id="autoPlayPanel">
+                <div class="label">オート：</div>
+                <select id="autoPlaySelector">
+                    <option value="0" selected>無効</option>
+                    <option value="1">有効</option>
+                </select>
+            </div>
+            <div class="myOptions" id="preparingStartSelector">
+                <button class="myOption" data-index="0" data-page="play">スタート</button>
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="play">
+            <div class="label" id="scoreLabel"></div>
+            <div id="circlePanel">
+                <div class="circlePanelInner" id="circlePanelInner1">
+                    <div id="circle"></div>
+                </div>
+                <div class="circlePanelInner" id="circlePanelInner2">
+                    <div id="effectCircle"></div>
+                </div>
+                <div class="circlePanelInner" id="circlePanelInner3">
+                    <div id="judgementCircle"></div>
+                </div>
+            </div>
+            <div class="label" id="comboLabel"></div>
+            <div class="progressBar">
+                <div class="progressBarOuter">
+                    <div class="progressBarInner" id="playProgressBar" style="width: 0%"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="notePage"></div>
+
+        <div class="page" id="pause">
+            <div class="label headingLabel">ポーズ画面</div>
+            <div class="myOptions" id="pauseOptions">
+                <button class="myOption pauseOption" data-index="0">続ける</button>
+                <button class="myOption pauseOption" data-index="1">やり直す</button>
+                <button class="myOption pauseOption" data-index="2" data-back="1">プレイ準備</button>
+                <button class="myOption pauseOption" data-index="3" data-back="2">曲選択へ</button>
+            </div>
+        </div>
+
+        <div class="page" id="result">
+            <div class="label headingLabel">結果</div>
+            <div class="text" id="resultText"></div>
+            <div class="myOptions" id="resultOptions">
+                <button class="myOption resultOption" data-index="0" data-back="1">もう一度</button>
+                <button class="myOption resultOption" data-index="1" data-back="2">プレイ準備</button>
+                <button class="myOption resultOption" data-index="2" data-back="3">曲選択へ</button>
+                <div style="display: flex; gap: 20px">
+                    <button class="myOption resultOption" data-index="3" data-page="detailedResult">詳細結果</button>
+                    <button class="myOption resultOption rainbow-glow" data-index="4" data-page="message">おめでとう！</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page" id="detailedResult">
+            <div class="label headingLabel">詳細結果</div>
+            <div class="text" id="detailedResultText"></div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="howToPlay">
+            <div class="label headingLabel" id="howToPlayLabel">遊び方</div>
+            <div class="text" id="howToPlayText">
+                右手：矢印キーでメロディに合わせてリズムを刻もう<br />
+                左手：Spaceキーでビートを刻み続けよう<br />
+                <br />
+                メロディのタイミングは線が中央の丸の周りの線に重なるとき<br />
+                ビートのタイミングは画面の枠が光るとき<br />
+                <br />
+                Pキーでポーズできる<br />
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="others">
+            <div class="label headingLabel" id="settingLabel">その他</div>
+            <div class="myOptions" id="othersOptions">
+                <button class="myOption othersOption" data-index="0" data-page="setting">設定</button>
+                <button class="myOption othersOption" data-index="1" data-page="keyPlacement">キー配置</button>
+                <button class="myOption othersOption" data-index="2" data-page="credit">クレジット</button>
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="setting">
+            <div class="label headingLabel" id="settingLabel">設定</div>
+            <div class="myOptions" id="settingOptions">
+                <button class="myOption settingOption" data-index="0" data-page="musicSetting">音楽</button>
+                <button class="myOption settingOption" data-index="1" data-page="timingSetting">タイミング</button>
+                <button class="myOption settingOption" data-index="2" data-page="testFunction">試験的機能</button>
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="timingSetting">
+            <div class="label headingLabel">タイミング設定</div>
+            <div class="text">
+                タイミングを選択して下さい<br />
+                ※数字が大きいほど判定位置が遅くなります
+            </div>
+            <select id="timingSelector">
+                <option value="-30">-3</option>
+                <option value="-20">-2</option>
+                <option value="-10">-1</option>
+                <option value="0" selected>0</option>
+                <option value="10">1</option>
+                <option value="20">2</option>
+                <option value="30">3</option>
+            </select>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="musicSetting">
+            <div class="label headingLabel">音楽設定</div>
+            <div class="text">BGM音量</div>
+            <select id="bgmVolumeSelector">
+                <option value="0">0</option>
+                <option value="0.2">1</option>
+                <option value="0.4">2</option>
+                <option value="0.6">3</option>
+                <option value="0.8">4</option>
+                <option value="1" selected>5</option>
+            </select>
+            <div class="text">SE音量</div>
+            <select id="seVolumeSelector">
+                <option value="0">0</option>
+                <option value="0.2">1</option>
+                <option value="0.4">2</option>
+                <option value="0.6">3</option>
+                <option value="0.8">4</option>
+                <option value="1" selected>5</option>
+            </select>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="testFunction">
+            <div class="label headingLabel">試験的機能</div>
+            <div class="text">
+                (非推奨)プレイ中のSEの有無<br />
+                ※有効にした場合、音ズレがあるためタイミング設定は無視されます
+            </div>
+            <select id="playSeSelector">
+                <option value="0" selected>無効</option>
+                <option value="1">有効</option>
+            </select>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="credit">
+            <div class="label headingLabel">クレジット</div>
+            <div class="text">
+                制作：MCR<br />
+                曲提供：うめぼし、いぽた
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="keyPlacement">
+            <div class="label headingLabel">キー配置</div>
+            <div class="text">
+                以下のどのキーを押しても反応します<br />
+                <br />
+                メロディ：A S D Z X C M K L , . / ← → ↑ ↓<br />
+                ビート：V B N Space Enter
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="message">
+            <div class="label headingLabel">おめでとう！</div>
+            <div class="text">
+                あなたはこのゲームの
+                <p style="color: coral">頑張って</p>
+                を頑張りました<br />
+                とてもすごいです<br />
+                よって、ここでその栄誉を表します<br />
+                <br />
+                MCR
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <script src="dist/BGM.js"></script>
+        <script src="dist/SE.js"></script>
+        <script src="dist/PageManager.js"></script>
+        <script src="dist/MIDIReader.js"></script>
+        <script src="dist/KeyboardManager.js"></script>
+        <script src="dist/InterruptibleInterval.js"></script>
+        <script src="dist/NoteElement.js"></script>
+        <script src="dist/GamepadManager.js"></script>
+        <script src="dist/GameManager.js"></script>
+        <script src="dist/DustAnimation.js"></script>
+        <script src="dist/Run.js"></script>
+    </body>
+</html>
