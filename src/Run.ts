@@ -19,6 +19,20 @@ document.getElementById("pageStart")!.onclick = async () => {
     SE.setVolume(2, 0.4);
 };
 
+document.getElementById("pageStart")!.ontouchend = () => {
+    let buffer;
+    fetch("assets/SE/通常ボタン.m4a")
+        .then((response) => response.arrayBuffer())
+        .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
+        .then((audioBuffer) => {
+            buffer = audioBuffer;
+        });
+    const source = audioContext.createBufferSource();
+    source.buffer = buffer!;
+    source.connect(audioContext.destination);
+    source.start(audioContext.currentTime + 0.001);
+};
+
 function sleep(ms: number): Promise<void> {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);

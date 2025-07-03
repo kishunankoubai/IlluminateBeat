@@ -3,11 +3,13 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="Cache-Control" content="no-store" />
         <link rel="stylesheet" href="css/InitialLayout.css" />
         <link rel="stylesheet" href="css/PageLayout.css" />
         <link rel="stylesheet" href="css/PlayLayout.css" />
         <link rel="stylesheet" href="css/MusicOptions.css" />
         <link rel="stylesheet" href="css/DustLayout.css" />
+        <link rel="icon" href="assets/IlluminateBeat.ico" />
         <script src="https://unpkg.com/picoaudio/dist/browser/PicoAudio.js"></script>
         <title>IlluminateBeat</title>
     </head>
@@ -23,9 +25,10 @@
         <div class="page" id="title">
             <div class="label" id="titleLabel">IlluminateBeat</div>
             <div class="myOptions" id="titleOptions">
-                <button class="myOption" data-index="0" data-page="musicSelect">曲選択へ</button>
-                <button class="myOption" data-index="1" data-page="howToPlay">遊び方</button>
-                <button class="myOption" data-index="2" data-page="others">その他</button>
+                <button class="myOption titleOption" data-index="0" data-page="musicSelect">曲選択へ</button>
+                <button class="myOption titleOption" data-index="1" data-page="howToPlay">遊び方</button>
+                <button class="myOption titleOption" data-index="2" data-page="howToPlay2">遊び方</button>
+                <button class="myOption titleOption" data-index="3" data-page="others">その他</button>
             </div>
         </div>
 
@@ -182,6 +185,11 @@
         </div>
 
         <div class="page" id="notePage"></div>
+        <canvas class="page" id="playCanvas"></canvas>
+        <div class="page" id="touchPage">
+            <div class="leftTouchPanel"></div>
+            <div class="rightTouchPanel"></div>
+        </div>
 
         <div class="page" id="pause">
             <div class="label headingLabel">ポーズ画面</div>
@@ -227,12 +235,25 @@
             <button class="returnButton">戻る</button>
         </div>
 
+        <div class="page" id="howToPlay2">
+            <div class="label headingLabel" id="howToPlayLabel2">遊び方</div>
+            <div class="text" id="howToPlayText2">
+                右手：画面右側をたたいてメロディに合わせてリズムを刻もう<br />
+                左手：画面左側をたたいてビートを刻み続けよう<br />
+                <br />
+                メロディのタイミングは線が中央の丸の周りの線に重なるとき<br />
+                ビートのタイミングは画面の枠が光るとき<br />
+            </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
         <div class="page" id="others">
             <div class="label headingLabel" id="settingLabel">その他</div>
             <div class="myOptions" id="othersOptions">
                 <button class="myOption othersOption" data-index="0" data-page="setting">設定</button>
                 <button class="myOption othersOption" data-index="1" data-page="keyPlacement">キー配置</button>
-                <button class="myOption othersOption" data-index="2" data-page="credit">クレジット</button>
+                <button class="myOption othersOption" data-index="2" data-page="touchSetting">タッチ設定</button>
+                <button class="myOption othersOption" data-index="3" data-page="credit">クレジット</button>
             </div>
             <button class="returnButton">戻る</button>
         </div>
@@ -254,6 +275,7 @@
                 ※数字が大きいほど判定位置が遅くなります
             </div>
             <select id="timingSelector">
+                <option value="-40">-4</option>
                 <option value="-30">-3</option>
                 <option value="-20">-2</option>
                 <option value="-10">-1</option>
@@ -261,6 +283,12 @@
                 <option value="10">1</option>
                 <option value="20">2</option>
                 <option value="30">3</option>
+                <option value="40">4</option>
+            </select>
+            <div class="text">メロディの判定位置からのずれの表示</div>
+            <select id="melodyGapSelector">
+                <option value="0">無効</option>
+                <option value="1" selected>有効</option>
             </select>
             <button class="returnButton">戻る</button>
         </div>
@@ -292,7 +320,8 @@
             <div class="label headingLabel">試験的機能</div>
             <div class="text">
                 (非推奨)プレイ中のSEの有無<br />
-                ※有効にした場合、音ズレがあるためタイミング設定は無視されます
+                ※有効にした場合、音ズレがあるためタイミング設定は無視されます<br />
+                ※スマホやタブレットではうまく機能しません
             </div>
             <select id="playSeSelector">
                 <option value="0" selected>無効</option>
@@ -318,6 +347,19 @@
                 メロディ：A S D Z X C M K L , . / ← → ↑ ↓<br />
                 ビート：V B N Space Enter
             </div>
+            <button class="returnButton">戻る</button>
+        </div>
+
+        <div class="page" id="touchSetting">
+            <div class="label headingLabel">タッチ設定</div>
+            <div class="text">
+                利き手設定<br />
+                ※利き手側の画面がメロディ、そうでない側がビートとして判定されます
+            </div>
+            <select id="dominantHandSelector">
+                <option value="0" selected>右手</option>
+                <option value="1">左手</option>
+            </select>
             <button class="returnButton">戻る</button>
         </div>
 

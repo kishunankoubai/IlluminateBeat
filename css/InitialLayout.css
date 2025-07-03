@@ -11,7 +11,7 @@
     left: 0;
     top: 0;
     display: none;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     overflow: hidden;
     position: absolute;
@@ -21,7 +21,7 @@
     left: 0;
     top: 0;
     display: none;
-    height: 100vh;
+    height: 100dvh;
     width: 100vw;
     overflow: hidden;
     z-index: 100;
@@ -44,4 +44,10 @@
     background: var(--accent-bg);
     border-bottom: 4px solid var(--border);
     box-shadow: 0 4px 16px var(--shadow);
+}
+
+@media (max-width: 768px) {
+    #pageStartLabel {
+        font-size: 7vw;
+    }
 }
