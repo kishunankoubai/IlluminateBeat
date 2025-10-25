@@ -1,6 +1,4 @@
 declare const PicoAudio: any;
-const picoAudio = new PicoAudio();
-picoAudio.init();
 type Note = { start: number; startTime: number; pitch: number; succeeded: boolean | null };
 
 class MIDIReader {

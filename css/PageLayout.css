@@ -22,7 +22,6 @@ body {
     height: 100dvh;
     width: 100vw;
     overflow: hidden;
-    font-family: "Arial", sans-serif;
     background-color: var(--main-bg);
     font-size: 3vw;
     z-index: -2;
@@ -44,12 +43,14 @@ button {
     height: 10dvh;
     padding: 10px 20px;
     border: none;
-    border-radius: 5px;
+    border-radius: 7px;
     background-color: var(--button-bg);
     color: white;
     font-size: 1em;
     cursor: pointer;
     transition: transform 0.2s, background-color 0.2s;
+    text-wrap-mode: nowrap;
+    touch-action: manipulation;
 }
 
 button:hover {
@@ -90,7 +91,7 @@ button:active {
 
 /* Startボタン */
 #preparingStartSelector .myOption[data-index="0"] {
-    border: 2px whitesmoke solid;
+    border: 2px #f5f5f5aa solid;
 }
 
 .page {
@@ -103,10 +104,26 @@ button:active {
 
 .label {
     font-size: 1em;
+    text-wrap-mode: nowrap;
 }
 
 #titleLabel {
     font-size: 4em;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 8px var(--shadow), 0 1px 0 #fff;
+    padding: 0.3em 0.4em;
+    border-radius: 20px;
+    display: inline-block;
+    transition: box-shadow 0.3s;
+    color: var(--primary);
+    background: var(--accent-bg);
+    border-bottom: 4px solid var(--border);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.headingLabel {
+    font-size: 1.7em;
     font-weight: bold;
     letter-spacing: 2px;
     text-shadow: 2px 2px 8px var(--shadow), 0 1px 0 #fff;
@@ -120,24 +137,9 @@ button:active {
     box-shadow: 0 4px 16px var(--shadow);
 }
 
-.headingLabel {
-    font-size: 1.8em;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-shadow: 2px 2px 8px var(--shadow), 0 1px 0 #fff;
-    padding: 0.5em 1.5em;
-    border-radius: 20px;
-    display: inline-block;
-    transition: box-shadow 0.3s;
-    color: var(--primary);
-    background: var(--accent-bg);
-    border-bottom: 4px solid var(--border);
-    box-shadow: 0 4px 16px var(--shadow);
-}
-
-.headingLabel:hover {
+/* .headingLabel:hover {
     box-shadow: 0 8px 24px rgba(255, 111, 97, 0.18);
-}
+} */
 
 select {
     display: inline-block;
@@ -168,6 +170,23 @@ option {
 
 .text {
     font-size: 1em;
+}
+
+.text:not(.musicOption *) {
+    padding-left: 4vh;
+    padding-right: 4vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 1vh;
+    border: #7778 1vh double;
+    background-color: #7778;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#resultText {
+    margin-top: -3vh;
+    margin-bottom: -5vh;
 }
 
 .text[data-align="left"] {
@@ -225,6 +244,48 @@ option {
     display: none;
 }
 
+.rangeContainer {
+    width: 46dvh;
+    max-width: 60dvw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3dvh;
+    & .text,
+    & .label {
+        text-wrap-mode: nowrap;
+    }
+    & input {
+        width: 50vw;
+        min-width: 150px;
+        height: 6vh;
+    }
+}
+
+#timingSetting .text {
+    /* margin-top: -2vh; */
+    margin-bottom: -2vh;
+}
+
+#timingDisplayLabel {
+    margin-top: -3vh;
+    margin-bottom: -2vh;
+}
+
+#searchInput {
+    font-size: 1em;
+    color: #333;
+    height: 5dvh;
+    margin-top: 3dvh;
+    max-width: 80dvw;
+    border-radius: 1vh;
+}
+
+a {
+    color: aquamarine;
+}
+
 @keyframes spin {
     0% {
         transform: rotate(0deg);
@@ -256,13 +317,13 @@ option {
         padding: 0.3em 0.5em;
     }
 
-    .headingLabel {
+    /* .headingLabel {
         font-size: 1.5em;
         padding: 0.3em 0.7em;
-    }
+    } */
 
     .text {
-        font-size: 0.9em;
+        font-size: 1em;
         padding-left: 5vw;
         padding-right: 5vw;
     }
@@ -279,5 +340,20 @@ option {
     }
     .othersOption[data-index="2"] {
         display: block;
+    }
+
+    #resultText {
+        margin-top: 0;
+        margin-bottom: -5vh;
+    }
+
+    .rangeContainer {
+        width: 38dvh;
+        max-width: 80dvw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1dvh;
     }
 }

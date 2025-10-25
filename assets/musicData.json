@@ -1,13 +1,34 @@
 [
+
     {
-        "name": "試作26",
+        "name": "きらきら星",
         "musicType": "m4a",
         "startTick": 0,
-        "adjustment": 132,
+        "adjustment": 171,
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 0.5
+        "volume": 1,
+
+        "backgroundColor" : "#54ffff",
+        "description1" : "作曲：Jean-Philippe Rameau 編曲：うめぼし",
+        "description2" : "童謡",
+        "difficulty" : 1
+    },
+    {
+        "name": "ふるさと",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 158,
+        "delayBeat": 3,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.9,
+
+        "backgroundColor" : "#54ffff",
+        "description1" : "作曲：岡野貞一 編曲：うめぼし",
+        "description2" : "童謡 文部省唱歌",
+        "difficulty" : 2
     },
     {
         "name": "Liar",
@@ -17,17 +38,28 @@
         "delayBeat": 4,
         "melodyTrack": 1,
         "tempoTrack": 1,
-        "volume": 0.5
+        "volume": 0.5,
+
+        "illust" : "../assets/thumbnail/bandage.png",
+        "description1" : "作編曲：extension",
+        "description2" : "登場する作品：The Twilight Days!",
+        "difficulty" : 6
     },
     {
-        "name": "k4",
+        "name": "Projection",
         "musicType": "m4a",
         "startTick": 240,
         "adjustment": 119,
         "delayBeat": 4,
         "melodyTrack": 1,
         "tempoTrack": 1,
-        "volume": 0.45
+        "volume": 0.45,
+
+        "illust" : "../assets/thumbnail/bandage.png",
+        "description1" : "作編曲：extension",
+        "description2" : "登場する作品：The Twilight Days!",
+        "difficulty" : 7
+
     },
     {
         "name": "ならべてトライアングル",
@@ -37,7 +69,13 @@
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 0.5
+        "volume": 0.45,
+
+        "illust" : "../assets/thumbnail/pentamond.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Pentamond, Pentamond2",
+        "difficulty" : 5
+
     },
     {
         "name": "Top of the Pyramid",
@@ -47,7 +85,12 @@
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 0.6
+        "volume": 0.6,
+
+        "illust" : "../assets/thumbnail/pentamond.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Pentamond2",
+        "difficulty" : 10
     },
     {
         "name": "Vector Space",
@@ -57,7 +100,12 @@
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 1
+        "volume": 0.9,
+
+        "illust" : "../assets/thumbnail/VectorSpaceIcon.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Vector Space",
+        "difficulty" : 6
     },
     {
         "name": "Unreachability",
@@ -68,7 +116,89 @@
         "measureLength": 1.5,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 1
+        "volume": 0.8,
+
+        "illust" : "../assets/thumbnail/VectorSpaceIcon.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Unreachability",
+        "difficulty" : 6
+    },
+    {
+        "name": "野晒しの地獄",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 145,
+        "delayBeat": 6,
+        "measureLength": 0.5,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.8,
+
+        "illust" : "../assets/thumbnail/maple.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：風呂無し、屋根無し、地獄行き。",
+        "difficulty" : 8
+    },
+    {
+        "name": "一切れの諧謔",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 169,
+        "delayBeat": 2,
+        "measureLength": 1.5,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.8,
+
+        "illust" : "../assets/thumbnail/maple.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：風呂無し、屋根無し、地獄行き。",
+        "difficulty" : 7
+    },
+    {
+        "name": "ひとやしきの魔女-title",
+        "musicType": "mp3",
+        "startTick": 0,
+        "adjustment": 112,
+        "delayBeat": 5,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.9,
+
+        "illust" : "../assets/thumbnail/wotm.png",
+        "description1" : "作編曲：extension",
+        "description2" : "登場する作品：ひとやしきの魔女",
+        "difficulty" : 4
+    },
+    {
+        "name": "ひとやしきの魔女-puzzle",
+        "musicType": "mp3",
+        "startTick": 0,
+        "adjustment": 91,
+        "delayBeat": 4,
+        "melodyTrack": 4,
+        "tempoTrack": 0,
+        "volume": 0.75,
+
+        "illust" : "../assets/thumbnail/wotm.png",
+        "description1" : "作編曲：extension",
+        "description2" : "登場する作品：ひとやしきの魔女",
+        "difficulty" : 6
+    },
+    {
+        "name": "迷子はどこへ",
+        "musicType": "mp3",
+        "startTick": 0,
+        "adjustment": 102,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.8,
+
+        "illust" : "../assets/thumbnail/maze.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Maze Memoir",
+        "difficulty" : 6
     },
     {
         "name": "マバラマダラ",
@@ -78,7 +208,26 @@
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 0.5
+        "volume": 0.5,
+
+        "illust" : "../assets/thumbnail/AgravityBallsIcon.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：Agravity Balls",
+        "difficulty" : 7
+    },
+    {
+        "name": "__",
+        "musicType": "m4a",
+        "startTick": 0,
+        "adjustment": 132,
+        "delayBeat": 4,
+        "melodyTrack": 0,
+        "tempoTrack": 0,
+        "volume": 0.5,
+
+        "description1" : "作曲：うめぼし 編曲：extension",
+        "description2" : "登場する作品：なし",
+        "difficulty" : 5
     },
     {
         "name": "ブンブンプーン",
@@ -88,26 +237,11 @@
         "delayBeat": 4,
         "melodyTrack": 0,
         "tempoTrack": 0,
-        "volume": 0.5
-    },
-    {
-        "name": "きらきら星",
-        "musicType": "m4a",
-        "startTick": 0,
-        "adjustment": 171,
-        "delayBeat": 4,
-        "melodyTrack": 0,
-        "tempoTrack": 0,
-        "volume": 1
-    },
-    {
-        "name": "ふるさと",
-        "musicType": "m4a",
-        "startTick": 0,
-        "adjustment": 158,
-        "delayBeat": 3,
-        "melodyTrack": 0,
-        "tempoTrack": 0,
-        "volume": 1
+        "volume": 0.5,
+
+        "illust" : "../assets/thumbnail/mosquito.png",
+        "description1" : "作編曲：うめぼし",
+        "description2" : "登場する作品：なし",
+        "difficulty" : 9
     }
 ]

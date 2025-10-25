@@ -1,35 +1,47 @@
 "use strict";
+//不正なページ遷移の防止
 document.addEventListener("keydown", (e) => {
-    if (e.code == "Tab") {
+    if (e.code == "Tab" || e.code == "Enter") {
         e.preventDefault();
     }
 });
+document.querySelectorAll("button").forEach((button) => {
+    button.tabIndex = -1;
+});
+let se = [];
+let picoAudio;
 document.addEventListener("DOMContentLoaded", async () => {
+    BGM.init();
+    Sound.init();
     await PageManager.init();
+    PageManager.setValid(false);
+    se = [
+        new Sound({ src: "assets/SE/モンド移動音.m4a", volume: 0.4 }),
+        new Sound({ src: "assets/SE/通常ボタン.m4a", volume: 0.4 }),
+        new Sound({ src: "assets/SE/戻るボタン.m4a", volume: 0.4 }),
+        new Sound({ src: "assets/SE/モンド移動音.m4a", volume: 0 }),
+        new Sound({ src: "assets/SE/鈴を鳴らす.wav", volume: 0.4 }),
+        new Sound({ src: "assets/SE/モンド設置音.m4a", volume: 0.4 }),
+    ];
+    await Promise.all(se.map((s) => s.isReady));
+    PageManager.setValid(true);
 });
 document.getElementById("pageStart").onclick = async () => {
-    BGM.init();
-    await sleep(100);
-    await SE.fetch(0, { path: "assets/SE/モンド移動音.m4a" });
-    SE.setVolume(0, 0.4);
-    await SE.fetch(1, { path: "assets/SE/通常ボタン.m4a" });
-    SE.setVolume(1, 0.4);
-    await SE.fetch(2, { path: "assets/SE/戻るボタン.m4a" });
-    SE.setVolume(2, 0.4);
+    se[1].play();
+    picoAudio = new PicoAudio();
+    await picoAudio.init();
+    document.getElementById("pageStart").onclick = () => { };
 };
-document.getElementById("pageStart").ontouchend = () => {
-    let buffer;
-    fetch("assets/SE/通常ボタン.m4a")
-        .then((response) => response.arrayBuffer())
-        .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
-        .then((audioBuffer) => {
-        buffer = audioBuffer;
-    });
-    const source = audioContext.createBufferSource();
-    source.buffer = buffer;
-    source.connect(audioContext.destination);
-    source.start(audioContext.currentTime + 0.001);
-};
+// document.getElementById("pageStart")!.ontouchend = () => {};
+//クリック以外の挙動をすべて握りつぶす
+// document.querySelectorAll(".page").forEach((element) => {
+//     if (element instanceof HTMLElement) {
+//         element.ontouchstart = (e) => {
+//             element.click();
+//             e.preventDefault();
+//         };
+//     }
+// });
 function sleep(ms) {
     return new Promise((resolve) => {
         setTimeout(resolve, ms);

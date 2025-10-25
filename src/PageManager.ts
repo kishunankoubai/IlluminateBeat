@@ -17,6 +17,34 @@ class PageManager {
             this.setPage(initialPageId);
         }
 
+        this.musicData = await (await fetch("assets/musicData.json")).json();
+        const musicOptions: HTMLElement = document.querySelector("#musicOptions")!;
+        this.musicData.forEach((data: any, index: number) => {
+            const musicOption = document.createElement("button");
+            musicOption.classList.add("myOption", "musicOption");
+            musicOption.dataset.index = index + "";
+            musicOption.dataset.page = "preparingStart";
+            const musicIllust = document.createElement("div");
+            musicIllust.classList.add("musicIllust");
+            if ("illust" in data) {
+                musicIllust.style.background = `url(${data.illust})`;
+                musicIllust.style.backgroundSize = "cover";
+            }
+            if ("backgroundColor" in data) {
+                musicIllust.style.backgroundColor = data.backgroundColor;
+            }
+            musicOption.appendChild(musicIllust);
+            if ("difficulty" in data) {
+                const text = `No.${index + 1} 曲名 : ${data.name}<br />${data.description1}<br />${data.description2}<br />難易度 : ${data.difficulty}`;
+                const textElement = document.createElement("div");
+                textElement.classList.add("text");
+                textElement.dataset.align = "left";
+                textElement.innerHTML = text;
+                musicOption.appendChild(textElement);
+            }
+            musicOptions.appendChild(musicOption);
+        });
+
         document.querySelectorAll("[data-se]").forEach((button) => {
             button.addEventListener("click", () => {
                 const data = (button as HTMLElement).dataset.se;
@@ -24,8 +52,7 @@ class PageManager {
                     return;
                 }
                 const index = parseInt(data);
-                SE.pause(index, true);
-                SE.play(index);
+                se[index].play();
             });
         });
 
@@ -56,10 +83,7 @@ class PageManager {
                 if ((button as HTMLElement).dataset.se == "none") {
                     return;
                 }
-                if (SE.isPlaying(1)) {
-                    SE.pause(1, true);
-                }
-                SE.play(1);
+                se[1].play();
             });
         });
 
@@ -68,27 +92,46 @@ class PageManager {
                 if ((returnButton as HTMLElement).dataset.se == "none") {
                     return;
                 }
-                if (SE.isPlaying(2)) {
-                    SE.pause(2, true);
-                }
-                SE.play(2);
+                se[2].play();
             });
         });
 
-        document.querySelectorAll("select").forEach((select) => {
-            select.addEventListener("change", () => {
-                const id = select.id;
-                if (id == "bgmVolumeSelector") {
-                    BGM.setVolume(parseFloat(select.value));
-                } else if (id == "seVolumeSelector") {
-                    SE.masterVolume = parseFloat(select.value);
-                } else if (id == "timingSelector") {
-                    this.masterAdjustment = parseInt(select.value);
+        document.querySelectorAll("input").forEach((input) => {
+            input.addEventListener("input", () => {
+                const id = input.id;
+                if (id == "bgmVolume") {
+                    BGM.setVolume(parseFloat(input.value) / 10);
+                    se[0].play();
+                } else if (id == "seVolume") {
+                    Sound.setWholeVolume(parseFloat(input.value) / 10);
+                    se[0].play();
+                } else if (id == "timingInput") {
+                    this.masterAdjustment = parseInt(input.value);
+                    document.querySelector<HTMLElement>("#timingDisplayLabel")!.innerHTML = "補正値：" + this.masterAdjustment + "ms";
+                    se[0].play();
                 }
             });
         });
 
-        this.musicData = await (await fetch("assets/musicData.json")).json();
+        //検索
+        document.querySelectorAll<HTMLInputElement>("#searchInput").forEach((element) => {
+            element.addEventListener("search", () => {
+                document.querySelectorAll<HTMLElement>(".musicOption").forEach((option) => {
+                    Array.from(option.children).forEach((text) => {
+                        if (text.classList.contains("text")) {
+                            const displayFlag = element.value.split(/\s|\u3000/g).every((string) => {
+                                return (text as HTMLElement).innerText.toLowerCase().includes(string.toLowerCase());
+                            });
+                            if (displayFlag) {
+                                option.style.display = "";
+                            } else {
+                                option.style.display = "none";
+                            }
+                        }
+                    });
+                });
+            });
+        });
     }
 
     static async setPage(pageId: string) {
@@ -110,6 +153,8 @@ class PageManager {
 
         this.pageMemory.push(pageId);
         this.on.setPage();
+
+        //特殊処理
         if (pageId == "preparingStart") {
             this.setValid(false);
             //musicの先行読み込み
@@ -160,17 +205,21 @@ class PageManager {
     }
 
     static async start() {
+        if (window.visualViewport) {
+            if (window.visualViewport.scale > 1) {
+                alert("画面がズームされています。スタート前にズームを戻してください。");
+                this.backPages(1);
+                return;
+            }
+        }
         this.setValid(false);
         const musicData = this.musicData[this.musicIndex];
         BGM.setCurrentTime(0);
+        //音がすぐに鳴るおまじない
+        // se[3].play();
         //midiの読み込み
         const midiReader = new MIDIReader("assets/musics/" + musicData.name + ".mid", musicData);
         await midiReader.isReady;
-        //音がすぐに鳴るおまじない
-        SE.setVolume(0, 0);
-        await SE.play(0);
-        SE.pause(0);
-        SE.setVolume(0, 0.5);
         //難易度設定の読み込み
         const selector = document.getElementById("difficultySelector") as HTMLSelectElement;
         const difficulty = parseInt(selector.value);

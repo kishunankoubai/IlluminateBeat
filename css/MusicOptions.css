@@ -1,3 +1,19 @@
+#musicSelect {
+    padding: 4dvh;
+    & #returnButtonContainer {
+        width: 60dvw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        bottom: 40px;
+        position: absolute;
+        background-color: #bbba;
+        border-radius: 1vh;
+        z-index: 1;
+        padding: 5dvh;
+    }
+}
+
 #musicOptions {
     width: 80vw;
     height: 60dvh;
@@ -5,20 +21,26 @@
     overflow-y: auto;
     justify-content: flex-start;
     align-items: center;
+    border: #666 4px solid;
+    border-radius: 8px;
+    background-color: #aaa6;
+    margin: 0;
+    flex: 1;
+    padding-bottom: 20dvh;
 }
 
 #musicOptions::-webkit-scrollbar {
-    width: 10px;
+    width: 15px;
 }
 
 #musicOptions::-webkit-scrollbar-track {
     background: #ccc;
-    border-radius: 5px;
+    border-radius: 7.5px;
 }
 
 #musicOptions::-webkit-scrollbar-thumb {
     background: #666;
-    border-radius: 5px;
+    border-radius: 7.5px;
     border: 2px solid #888;
 }
 
@@ -44,7 +66,7 @@
     white-space: nowrap;
 }
 
-#musicOptions .musicOption:first-child {
+#musicOptions [data-index="0"] {
     margin-top: 3dvh;
 }
 
@@ -59,54 +81,7 @@
 
 .musicIllust {
     background-color: whitesmoke;
-}
-
-.musicOption[data-index="1"] .musicIllust {
-    background: url("../assets/thumbnail/bandage.png");
     background-size: cover;
-}
-
-.musicOption[data-index="2"] .musicIllust {
-    background: url("../assets/thumbnail/bandage.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="3"] .musicIllust {
-    background: url("../assets/thumbnail/pentamond.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="4"] .musicIllust {
-    background: url("../assets/thumbnail/pentamond.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="5"] .musicIllust {
-    background: url("../assets/thumbnail/VectorSpaceIcon.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="6"] .musicIllust {
-    background: url("../assets/thumbnail/VectorSpaceIcon.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="7"] .musicIllust {
-    background: url("../assets/thumbnail/AgravityBallsIcon.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="8"] .musicIllust {
-    background: url("../assets/thumbnail/mosquito.png");
-    background-size: cover;
-}
-
-.musicOption[data-index="9"] .musicIllust {
-    background: rgb(84, 255, 255);
-}
-
-.musicOption[data-index="10"] .musicIllust {
-    background: rgb(84, 255, 255);
 }
 
 @media (max-width: 768px) {

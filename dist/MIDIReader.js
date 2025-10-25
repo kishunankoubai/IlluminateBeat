@@ -1,6 +1,4 @@
 "use strict";
-const picoAudio = new PicoAudio();
-picoAudio.init();
 class MIDIReader {
     notes = [];
     resolution = 480;

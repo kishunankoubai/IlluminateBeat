@@ -41,8 +41,6 @@ const difficultySetting = [
     },
 ];
 
-const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ latencyHint: "interactive" });
-
 class GameManager {
     playPage = document.getElementById("play")!;
     circle = document.getElementById("circle")!;
@@ -151,7 +149,7 @@ class GameManager {
         }
 
         //PCじゃないかどうか
-        this.mobileMode = document.body.clientWidth <= 768;
+        this.mobileMode = (window.navigator.userAgent.includes("Android") && window.navigator.userAgent.includes("iPad")) || window.navigator.userAgent.includes("iPhone");
         this.simplifyEffects = this.mobileMode;
 
         //曲情報の読み込み
@@ -171,7 +169,9 @@ class GameManager {
         ];
         this.difficulty = difficulty;
         this.light = this.maxLight;
-        this.graceTick = this.midiReader.resolution / this.graceRate;
+        // this.graceTick = this.midiReader.resolution / this.graceRate;
+        this.graceTick = (this.midiReader.resolution * this.midiReader.tempo) / (this.graceRate * 60 * 2);
+        // console.log(this.midiReader.tempo / 60 / 2 / this.graceRate);
         if (difficulty == 4) {
             this.rgb = [233, 190, 144];
         }
@@ -190,36 +190,12 @@ class GameManager {
         this.scoreLabel.style.color = `rgb(118, 101, 35)`;
         this.comboLabel.style.color = `rgb(118, 101, 35)`;
 
-        // 事前にデコード済みAudioBufferSourceNodeをプールしておき、即時再生する
-        fetch("assets/SE/鈴を鳴らす.wav")
-            .then((response) => response.arrayBuffer())
-            .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
-            .then((audioBuffer) => {
-                this.melodyBuffer = audioBuffer;
-            });
-        fetch("assets/SE/モンド設置音.m4a")
-            .then((response) => response.arrayBuffer())
-            .then((arrayBuffer) => audioContext.decodeAudioData(arrayBuffer))
-            .then((audioBuffer) => {
-                this.beatBuffer = audioBuffer;
-            });
-
         this.playMelodySE = () => {
-            if (!this.melodyBuffer) return;
-            // AudioBufferSourceNodeは1回しか使えないので毎回新規作成
-            const source = audioContext.createBufferSource();
-            source.buffer = this.melodyBuffer;
-            source.connect(audioContext.destination);
-            source.start(audioContext.currentTime + 0.001);
+            se[4].play();
         };
 
         this.playBeatSE = () => {
-            if (!this.beatBuffer) return;
-            // AudioBufferSourceNodeは1回しか使えないので毎回新規作成
-            const source = audioContext.createBufferSource();
-            source.buffer = this.beatBuffer;
-            source.connect(audioContext.destination);
-            source.start(audioContext.currentTime + 0.001);
+            se[5].play();
         };
 
         //Pを押すとポーズ
@@ -347,11 +323,11 @@ class GameManager {
         this.previousHeight *= 0.9;
 
         //猶予tickの後半では枠線を表示
-        if (0 <= tickGap && tickGap <= this.graceTick) {
+        if (-Math.min(this.graceTick, 20) <= tickGap && tickGap <= this.graceTick) {
             //beatの判定の真ん中だけ検出
             if (this.playPage.style.border == "none") {
                 if (nearestBeat < this.delayBeat * this.midiReader.resolution) {
-                    SE.play(0);
+                    se[0].play();
                 }
                 if (this.autoPlay) {
                     this.beatSuccess();
@@ -520,7 +496,7 @@ class GameManager {
 
         // console.log(currentTime - bgmCurrentTime + "");
         //bgmとloopIntervalのずれを補正する
-        if (Math.abs(currentTime - bgmCurrentTime) > 0.015) {
+        if (Math.abs(currentTime - bgmCurrentTime) > 0.02) {
             BGM.setCurrentTime(currentTime);
             console.error("このメッセージがたくさん表示される場合は同期が不安定です");
         }
@@ -560,7 +536,38 @@ class GameManager {
         BGM.pause();
         this.loopInterval.pause();
         this.keyboardManager.stop();
+
+        let message: string = "";
+        let awesomeness = 0;
+        this.result.style.backgroundColor = "#7778";
+        //フルコンボ
+        if (Math.floor(this.successBeatCount / Math.floor(this.getTick() / this.midiReader.resolution - this.delayBeat + 1)) >= 1) {
+            if (this.melodyCount == this.midiReader.notes.length) {
+                message = "<br />完全クリアおめでとう！";
+                this.result.style.backgroundColor = "rgba(255, 223, 78, 0.66)";
+                awesomeness = 3;
+            } else {
+                message = "<br />フルビート！";
+                this.result.style.backgroundColor = "rgba(100, 23, 23, 0.53)";
+                awesomeness = 1;
+            }
+        } else {
+            if (this.melodyCount == this.midiReader.notes.length) {
+                message = "<br />フルコンボ！";
+                this.result.style.backgroundColor = "rgba(255, 145, 1, 0.53)";
+                awesomeness = 2;
+            }
+        }
+
+        if (this.autoPlay) {
+            this.result.style.backgroundColor = "#7778";
+            message = "";
+        }
+
         (document.querySelector(".resultOption[data-index='4']")! as HTMLElement).style.display = "none";
+        (document.querySelector(".resultOption[data-index='5']")! as HTMLElement).style.display = "none";
+        (document.querySelector(".resultOption[data-index='6']")! as HTMLElement).style.display = "none";
+        (document.querySelector(".resultOption[data-index='7']")! as HTMLElement).style.display = "none";
         if (this.clearFlag) {
             console.log("clear!");
             if (this.difficulty == 4 && this.midiReader.notes.length >= 200 && !this.autoPlay) {
@@ -568,7 +575,7 @@ class GameManager {
                     Math.floor(((this.melodyCount + this.successBeatCount) * 100) / (this.getNumberOfJudgedNotes() + Math.floor(this.getTick() / this.midiReader.resolution - this.delayBeat + 1))) >=
                     50
                 ) {
-                    (document.querySelector(".resultOption[data-index='4']")! as HTMLElement).style.display = "block";
+                    (document.querySelector(`.resultOption[data-index='${4 + awesomeness}']`)! as HTMLElement).style.display = "block";
                 }
             }
         } else {
@@ -582,6 +589,8 @@ class GameManager {
         this.notePage.style.display = "none";
         this.touchPage.style.display = "none";
         this.removeAllNotes();
+        const medianDeviation = Math.round((this.melodyDifferences[Math.floor(this.melodyDifferences.length / 2)] * 60000) / (this.midiReader.resolution * this.midiReader.tempo));
+
         this.result.innerHTML = `
         進行率：${this.clearFlag ? 100 : Math.floor((BGM.getCurrentTime() * 100) / BGM.Time.duration)}%<br />
         正確率：${Math.floor(
@@ -589,7 +598,8 @@ class GameManager {
         )}%<br />
         演奏の上手さ：${this.getPoint()} / ${100 * difficultySetting[this.difficulty].level}<br />
         Score：${this.score}<br />
-        ずれの中央値：${(this.melodyDifferences[Math.floor(this.melodyDifferences.length / 2)] * 60000) / (this.midiReader.resolution * this.midiReader.tempo)}ms
+        ずれの中央値：${Number.isNaN(medianDeviation) ? "0" : medianDeviation}ms
+        ${message}
         `;
         this.writeDetailedResult();
         PageManager.setPage("result");
@@ -605,6 +615,8 @@ class GameManager {
 
     writeDetailedResult() {
         const detailedResult = document.getElementById("detailedResultText")!;
+
+        const medianDeviation = Math.round((this.melodyDifferences[Math.floor(this.melodyDifferences.length / 2)] * 60000) / (this.midiReader.resolution * this.midiReader.tempo));
         detailedResult.innerHTML = `
         進行率：${this.clearFlag ? 100 : Math.floor((BGM.getCurrentTime() * 100) / BGM.Time.duration)}%<br />
         正確率：${Math.floor(
@@ -618,6 +630,7 @@ class GameManager {
         失敗したメロディ：${this.midiReader.notes.filter((note) => note.succeeded == false).length}<br />
         演奏の上手さ：${this.getPoint()} / ${100 * difficultySetting[this.difficulty].level}<br />
         Score：${this.score}<br />
+        ずれの中央値：${Number.isNaN(medianDeviation) ? "0" : medianDeviation}ms<br />
         ${this.autoPlay ? "これはオートプレイです" : "レベル：" + this.difficulty}
         `;
     }
