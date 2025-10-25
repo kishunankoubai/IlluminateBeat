@@ -40,7 +40,7 @@
         "tempoTrack": 1,
         "volume": 0.5,
 
-        "illust" : "../assets/thumbnail/bandage.png",
+        "illust" : "assets/thumbnail/bandage.png",
         "description1" : "作編曲：extension",
         "description2" : "登場する作品：The Twilight Days!",
         "difficulty" : 6
@@ -55,7 +55,7 @@
         "tempoTrack": 1,
         "volume": 0.45,
 
-        "illust" : "../assets/thumbnail/bandage.png",
+        "illust" : "assets/thumbnail/bandage.png",
         "description1" : "作編曲：extension",
         "description2" : "登場する作品：The Twilight Days!",
         "difficulty" : 7
@@ -71,7 +71,7 @@
         "tempoTrack": 0,
         "volume": 0.45,
 
-        "illust" : "../assets/thumbnail/pentamond.png",
+        "illust" : "assets/thumbnail/pentamond.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Pentamond, Pentamond2",
         "difficulty" : 5
@@ -87,7 +87,7 @@
         "tempoTrack": 0,
         "volume": 0.6,
 
-        "illust" : "../assets/thumbnail/pentamond.png",
+        "illust" : "assets/thumbnail/pentamond.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Pentamond2",
         "difficulty" : 10
@@ -102,7 +102,7 @@
         "tempoTrack": 0,
         "volume": 0.9,
 
-        "illust" : "../assets/thumbnail/VectorSpaceIcon.png",
+        "illust" : "assets/thumbnail/VectorSpaceIcon.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Vector Space",
         "difficulty" : 6
@@ -118,7 +118,7 @@
         "tempoTrack": 0,
         "volume": 0.8,
 
-        "illust" : "../assets/thumbnail/VectorSpaceIcon.png",
+        "illust" : "assets/thumbnail/VectorSpaceIcon.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Unreachability",
         "difficulty" : 6
@@ -134,7 +134,7 @@
         "tempoTrack": 0,
         "volume": 0.8,
 
-        "illust" : "../assets/thumbnail/maple.png",
+        "illust" : "assets/thumbnail/maple.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：風呂無し、屋根無し、地獄行き。",
         "difficulty" : 8
@@ -150,7 +150,7 @@
         "tempoTrack": 0,
         "volume": 0.8,
 
-        "illust" : "../assets/thumbnail/maple.png",
+        "illust" : "assets/thumbnail/maple.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：風呂無し、屋根無し、地獄行き。",
         "difficulty" : 7
@@ -165,7 +165,7 @@
         "tempoTrack": 0,
         "volume": 0.9,
 
-        "illust" : "../assets/thumbnail/wotm.png",
+        "illust" : "assets/thumbnail/wotm.png",
         "description1" : "作編曲：extension",
         "description2" : "登場する作品：ひとやしきの魔女",
         "difficulty" : 4
@@ -180,7 +180,7 @@
         "tempoTrack": 0,
         "volume": 0.75,
 
-        "illust" : "../assets/thumbnail/wotm.png",
+        "illust" : "assets/thumbnail/wotm.png",
         "description1" : "作編曲：extension",
         "description2" : "登場する作品：ひとやしきの魔女",
         "difficulty" : 6
@@ -195,7 +195,7 @@
         "tempoTrack": 0,
         "volume": 0.8,
 
-        "illust" : "../assets/thumbnail/maze.png",
+        "illust" : "assets/thumbnail/maze.PNG",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Maze Memoir",
         "difficulty" : 6
@@ -210,7 +210,7 @@
         "tempoTrack": 0,
         "volume": 0.5,
 
-        "illust" : "../assets/thumbnail/AgravityBallsIcon.png",
+        "illust" : "assets/thumbnail/AgravityBallsIcon.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：Agravity Balls",
         "difficulty" : 7
@@ -239,7 +239,7 @@
         "tempoTrack": 0,
         "volume": 0.5,
 
-        "illust" : "../assets/thumbnail/mosquito.png",
+        "illust" : "assets/thumbnail/mosquito.png",
         "description1" : "作編曲：うめぼし",
         "description2" : "登場する作品：なし",
         "difficulty" : 9
